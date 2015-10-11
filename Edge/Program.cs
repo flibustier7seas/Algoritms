@@ -2,7 +2,7 @@
 
 namespace Edge
 {
-    class Progrram
+    class Program
     {
         static void Main()
         {
