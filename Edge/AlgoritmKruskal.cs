@@ -10,6 +10,7 @@ namespace Edge
             var ostovList = new List<Edge<T>>();
             var nodeList = nodes.ToList();
             var treesId = new Dictionary<T, int>();
+            var dsu = new Dsu(nodeList.Count);
 
             var i = 0;
 
@@ -19,16 +20,17 @@ namespace Edge
             }
 
             var listSort = list.OrderBy(x => x.Weight).ToArray();
-            foreach (var edge in listSort.Where(edge => treesId[edge.FirstNode] != treesId[edge.SecondNode]))
+            foreach (var edge in listSort)
             {
-                ostovList.Add(edge);
+                var firstTreeId = treesId[edge.FirstNode];
+                var secondTreeId = treesId[edge.SecondNode];
 
-                var oldTreeId = treesId[edge.FirstNode];
-                var newTreeId = treesId[edge.SecondNode];
-
-                foreach (var node in nodeList.Where(node => treesId[node] == oldTreeId))
+                if (dsu.Find(firstTreeId) != dsu.Find(secondTreeId))
                 {
-                    treesId[node] = newTreeId;
+                    ostovList.Add(edge);
+                    dsu.Unite(firstTreeId, secondTreeId);
+                    treesId[edge.FirstNode] = dsu.Find(firstTreeId);
+                    treesId[edge.SecondNode] = dsu.Find(secondTreeId);
                 }
             }
             return ostovList;

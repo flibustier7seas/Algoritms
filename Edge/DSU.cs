@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Edge
+﻿namespace Edge
 {
-    class DSU
+    class Dsu
     {
         private readonly int[] _parent;
+
+        // Ранг дерева >= высоты дерева
         private readonly int[] _rank;
-        public DSU(int count)
+        public Dsu(int count)
         {
             _rank = new int[count];
             _parent = new int[count];
@@ -27,9 +23,13 @@ namespace Edge
             {
                 return value;
             }
-            return _parent[value] = Find(_parent[value]);
-        }
 
+            var topParent = SearchTopParent(value);
+
+            ChangeTreeParent(value, topParent);
+
+            return topParent;
+        }
         public void Unite(int x, int y)
         {
             x = Find(x);
@@ -42,6 +42,29 @@ namespace Edge
                 if (_rank[x] == _rank[y])
                     ++_rank[x];
             }
+        }
+
+
+        private void ChangeTreeParent(int index, int maxParent)
+        {
+            while (_parent[index] != maxParent)
+            {
+                var nextIndex = _parent[index];
+                _parent[index] = maxParent;
+                index = nextIndex;
+            }
+        }
+
+        private int SearchTopParent(int startIndex)
+        {
+            var topParent = _parent[startIndex];
+
+            while (_parent[topParent] != topParent)
+            {
+                topParent = _parent[topParent];
+            }
+
+            return topParent;
         }
     }
 }

@@ -24,7 +24,14 @@ namespace Edge
 
             const int countNodes = 8;
             var nodes = Enumerable.Range(1, countNodes);
-            
+
+            var dsu = new Dsu(10);
+
+            dsu.Unite(0, 1);
+            dsu.Unite(2, 3);
+            dsu.Unite(0, 2);
+            dsu.Find(3);
+
             var ostovGraph = AlgoritmKruskal.GetOstovGraph(list, nodes, countNodes);
             var ostovGraph2 = AlgoritmPrima.GetOstovGraph(list, countNodes, 1);
         }
