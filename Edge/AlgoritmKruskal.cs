@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 
 namespace Edge
 {
@@ -9,26 +8,27 @@ namespace Edge
         static public IEnumerable<Edge<T>> GetOstovGraph<T>(IEnumerable<Edge<T>> list, IEnumerable<T> nodes, int countNodes)
         {
             var ostovList = new List<Edge<T>>();
+            var nodeList = nodes.ToList();
+            var treesId = new Dictionary<T, int>();
 
-            var trees = new Dictionary<T, int>();
             var i = 0;
 
-            foreach (var node in nodes)
+            foreach (var node in nodeList)
             {
-                trees[node] = i++;
+                treesId[node] = i++;
             }
 
-            var listSort = list.OrderBy(x => x.Weight);
-            foreach (var edge in listSort)
+            var listSort = list.OrderBy(x => x.Weight).ToArray();
+            foreach (var edge in listSort.Where(edge => treesId[edge.FirstNode] != treesId[edge.SecondNode]))
             {
-                if (trees[edge.FirstNode] != trees[edge.SecondNode])
-                {
-                    ostovList.Add(edge);
+                ostovList.Add(edge);
 
-                    if (trees[edge.FirstNode] > trees[edge.SecondNode])
-                    {
-                        
-                    }
+                var oldTreeId = treesId[edge.FirstNode];
+                var newTreeId = treesId[edge.SecondNode];
+
+                foreach (var node in nodeList.Where(node => treesId[node] == oldTreeId))
+                {
+                    treesId[node] = newTreeId;
                 }
             }
             return ostovList;

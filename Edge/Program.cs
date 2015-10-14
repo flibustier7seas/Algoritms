@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Edge
 {
@@ -22,7 +23,10 @@ namespace Edge
             };
 
             const int countNodes = 8;
-            var ostovGraph = AlgoritmPrima.GetOstovGraph(list, countNodes, 1);
+            var nodes = Enumerable.Range(1, countNodes);
+            
+            var ostovGraph = AlgoritmKruskal.GetOstovGraph(list, nodes, countNodes);
+            var ostovGraph2 = AlgoritmPrima.GetOstovGraph(list, countNodes, 1);
         }
     }
 }
