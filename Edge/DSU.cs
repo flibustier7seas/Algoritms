@@ -1,11 +1,15 @@
 ﻿namespace Edge
 {
+    //http://e-maxx.ru/algo/dsu
+    /// <summary>
+    /// Система непересекающихся множеств 
+    /// </summary>
     class Dsu
     {
         private readonly int[] _parent;
-
         // Ранг дерева >= высоты дерева
         private readonly int[] _rank;
+
         public Dsu(int count)
         {
             _rank = new int[count];
@@ -30,28 +34,21 @@
 
             return topParent;
         }
-        public void Unite(int x, int y)
+
+        public void Unite(int first, int second)
         {
-            x = Find(x);
-            y = Find(y);
-            if (_rank[x] < _rank[y])
-                _parent[x] = y;
+            first = Find(first);
+            second = Find(second);
+
+            if (first == second) return;
+
+            if (_rank[first] < _rank[second])
+                _parent[first] = second;
             else
             {
-                _parent[y] = x;
-                if (_rank[x] == _rank[y])
-                    ++_rank[x];
-            }
-        }
-
-
-        private void ChangeTreeParent(int index, int maxParent)
-        {
-            while (_parent[index] != maxParent)
-            {
-                var nextIndex = _parent[index];
-                _parent[index] = maxParent;
-                index = nextIndex;
+                _parent[second] = first;
+                if (_rank[first] == _rank[second])
+                    ++_rank[first];
             }
         }
 
@@ -65,6 +62,16 @@
             }
 
             return topParent;
+        }
+
+        private void ChangeTreeParent(int index, int maxParent)
+        {
+            while (_parent[index] != maxParent)
+            {
+                var nextIndex = _parent[index];
+                _parent[index] = maxParent;
+                index = nextIndex;
+            }
         }
     }
 }
