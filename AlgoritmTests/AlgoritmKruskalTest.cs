@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Edge;
+using NUnit.Framework;
 
-namespace Edge
+namespace AlgoritmTests
 {
-    class Program
+    [TestFixture]
+    class AlgoritmKruskalTest
     {
-        static void Main()
+        [Test]
+        public void Test()
         {
             var list = new List<Edge<int>>
             {
@@ -26,7 +30,8 @@ namespace Edge
             var nodes = Enumerable.Range(1, countNodes);
 
             var ostovGraph = AlgoritmKruskal.GetOstovGraph(list, nodes, countNodes);
-            var ostovGraph2 = AlgoritmPrima.GetOstovGraph(list, countNodes, 1);
+
+            Assert.That(ostovGraph, Has.Count.EqualTo(7));
         }
     }
 }

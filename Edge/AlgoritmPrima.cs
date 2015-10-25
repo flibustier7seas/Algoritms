@@ -35,7 +35,8 @@ namespace Edge
                 ostov.Add(minEdge);
                 edges.Remove(minEdge);
 
-                checkList.Add(checkList.Contains(minEdge.FirstNode) ? minEdge.SecondNode : minEdge.FirstNode);
+                if (minEdge != null)
+                    checkList.Add(checkList.Contains(minEdge.FirstNode) ? minEdge.SecondNode : minEdge.FirstNode);
             }
             return ostov;
         }
