@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Edge
+﻿namespace Algoritms
 {
     public class Edge<T>
     {
@@ -10,7 +8,6 @@ namespace Edge
             FirstNode = firstNode;
             SecondNode = secondNode;
         }
-
 
         public int Weight { private set; get; }
         public T FirstNode{ private set; get; }

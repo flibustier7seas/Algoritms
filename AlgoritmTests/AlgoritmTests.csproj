@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlgoritmDijkstraTest.cs" />
     <Compile Include="AlgoritmKruskalTest.cs" />
     <Compile Include="AlgoritmPrimaTest.cs" />
     <Compile Include="DsuTest.cs" />
@@ -51,9 +52,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Edge\Edge.csproj">
+    <ProjectReference Include="..\Edge\Algoritms.csproj">
       <Project>{8ad8e492-a44b-4fde-bb62-05b5da1cf977}</Project>
-      <Name>Edge</Name>
+      <Name>Algoritms</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

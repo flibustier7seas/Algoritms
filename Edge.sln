@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edge", "Edge\Edge.csproj", "{8AD8E492-A44B-4FDE-BB62-05B5DA1CF977}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algoritms", "Edge\Algoritms.csproj", "{8AD8E492-A44B-4FDE-BB62-05B5DA1CF977}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgoritmTests", "AlgoritmTests\AlgoritmTests.csproj", "{04248DA5-6294-4029-AEAA-957962296BD2}"
 EndProject

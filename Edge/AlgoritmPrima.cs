@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Edge
+namespace Algoritms
 {
     public static class AlgoritmPrima
     {

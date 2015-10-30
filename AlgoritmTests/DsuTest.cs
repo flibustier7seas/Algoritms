@@ -1,4 +1,4 @@
-﻿using Edge;
+﻿using Algoritms;
 using NUnit.Framework;
 
 namespace AlgoritmTests

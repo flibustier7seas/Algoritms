@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Edge;
+using Algoritms;
 using NUnit.Framework;
 
 namespace AlgoritmTests
@@ -9,7 +9,7 @@ namespace AlgoritmTests
     class AlgoritmKruskalTest
     {
         [Test]
-        public void Test()
+        public void GetOstovGraphTest()
         {
             var list = new List<Edge<int>>
             {
@@ -26,10 +26,11 @@ namespace AlgoritmTests
                 new Edge<int>(7, 8, 39)
             };
 
-            const int countNodes = 8;
-            var nodes = Enumerable.Range(1, countNodes);
+            const int CountNodes = 8;
 
-            var ostovGraph = AlgoritmKruskal.GetOstovGraph(list, nodes, countNodes);
+            var nodes = Enumerable.Range(1, CountNodes);
+
+            var ostovGraph = AlgoritmKruskal.GetOstovGraph(list, nodes);
 
             Assert.That(ostovGraph, Has.Count.EqualTo(7));
         }

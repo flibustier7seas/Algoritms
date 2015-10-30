@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Edge
+namespace Algoritms
 {
     //http://e-maxx.ru/algo/dsu
     /// <summary>

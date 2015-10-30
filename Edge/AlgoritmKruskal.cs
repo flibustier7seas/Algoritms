@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Edge
+namespace Algoritms
 {
     public static class AlgoritmKruskal
     {
-        static public IEnumerable<Edge<T>> GetOstovGraph<T>(IEnumerable<Edge<T>> list, IEnumerable<T> nodes, int countNodes)
+        static public IEnumerable<Edge<T>> GetOstovGraph<T>(IEnumerable<Edge<T>> list, IEnumerable<T> nodes)
         {
             var ostovList = new List<Edge<T>>();
             var dsu = new Dsu<T>();

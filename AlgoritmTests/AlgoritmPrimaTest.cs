@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Edge;
+
+using Algoritms;
 using NUnit.Framework;
 
 namespace AlgoritmTests
@@ -9,7 +9,7 @@ namespace AlgoritmTests
     class AlgoritmPrimaTest
     {
         [Test]
-        public void Test()
+        public void GetOstovGraphTest()
         {
             var list = new List<Edge<int>>
             {
@@ -26,9 +26,9 @@ namespace AlgoritmTests
                 new Edge<int>(7, 8, 39)
             };
 
-            const int countNodes = 8;
+            const int CountNodes = 8;
 
-            var ostovGraph = AlgoritmPrima.GetOstovGraph(list, countNodes, 1);
+            var ostovGraph = AlgoritmPrima.GetOstovGraph(list, CountNodes, 1);
 
             Assert.That(ostovGraph, Has.Count.EqualTo(7));
         }
